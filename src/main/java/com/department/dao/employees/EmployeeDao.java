@@ -15,12 +15,8 @@ public interface EmployeeDao {
     String GET_EMAILS = "SELECT email FROM employees";
 
     void addOrEditEmployee(Employee employee);
-
     void delete(Integer id);
-
     Employee getOneEmployee(Integer id);
-
     List<Employee> getAllEmployees(Integer id);
-
-    Set<String> getEmails();
+//    Set<String> getEmails();
 }
