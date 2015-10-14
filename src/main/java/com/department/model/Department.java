@@ -7,15 +7,26 @@ import net.sf.oval.constraint.NotEmpty;
 import net.sf.oval.constraint.NotNull;
 import net.sf.oval.constraint.ValidateWithMethod;
 
+import javax.persistence.*;
+
 /**
  * Created on 16.09.2015.
  */
+
+@Entity
+@Table(name = "departments")
 public class Department {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @NotNull (message = "Field name is empty")
     @NotEmpty (message = "Field name is empty")
     @Length(min = 1, max = 20, message = "insert minimum 1 char")
     @ValidateWithMethod(methodName = "existName", parameterType = String.class, message = "This name already exist")
+
+    @Column(name = "name")
     private String name;
 
     public Integer getId() {
