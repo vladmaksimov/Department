@@ -33,9 +33,6 @@ public class Employee {
     @Temporal(value= TemporalType.DATE)
     private Date date;
 
-    @Column(name = "departmentId")
-    private Integer departmentId;
-
     @NotNull(message = "Field email is empty")
     @NotEmpty(message = "Field email is empty")
     @Email(message = "incorrect email format")
@@ -51,6 +48,10 @@ public class Employee {
 
     @Column(name = "salary")
     private Float salary;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "departmentId", nullable = false)
+    private Department department;
 
     public Integer getId() {
         return id;
@@ -84,14 +85,6 @@ public class Employee {
         this.email = email;
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
-    }
-
     public Float getSalary() {
         return salary;
     }
@@ -100,4 +93,11 @@ public class Employee {
         this.salary = salary;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 }

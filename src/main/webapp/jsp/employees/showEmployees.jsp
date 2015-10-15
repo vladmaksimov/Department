@@ -6,7 +6,7 @@
 </head>
 <body>
 <form name="controller" method="post">
-    <input hidden value="${department.id}">
+    <input type="hidden" name="departmentId" value="${department.id}">
 
     <h2>Department: ${department.name}</h2>
     <table border="1">
@@ -24,8 +24,8 @@
                 <td><c:out value="${employee.email}"/></td>
                 <td><c:out value="${employee.date}"/></td>
                 <td><c:out value="${employee.salary}"/></td>
-                <td><a href="?action=editEmployee&id=${employee.id}"><input type="button" value="Edit"></a></td>
-                <td><a href="?action=deleteEmployee&id=${employee.id}&departmentId=${employee.departmentId}"><input
+                <td><a href="?action=editEmployee&id=${employee.id}&departmentId=${department.id}"><input type="button" value="Edit"></a></td>
+                <td><a href="?action=deleteEmployee&id=${employee.id}&departmentId=${department.id}"><input
                         type="button" value="Delete"></a></td>
             </tr>
         </c:forEach>

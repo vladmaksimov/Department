@@ -1,9 +1,10 @@
 package com.department.model;
 
-import com.department.dao.department.DepartmentDao;
-import com.department.dao.department.impl.DepartmentDaoImpl;
 import com.department.utils.validator.ValidateDepartmentName;
-import net.sf.oval.constraint.*;
+import net.sf.oval.constraint.CheckWith;
+import net.sf.oval.constraint.Length;
+import net.sf.oval.constraint.NotEmpty;
+import net.sf.oval.constraint.NotNull;
 
 import javax.persistence.*;
 
@@ -41,4 +42,5 @@ public class Department {
     public void setName(String name) {
         this.name = name;
     }
+
 }

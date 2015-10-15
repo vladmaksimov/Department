@@ -21,16 +21,16 @@
     <c:forEach items="${departmentsList}" var="department">
     <tr>
       <td><c:out value="${department.name}" /></td>
-      <td><a href="?action=editDepartment&id=${department.id}"><input type="button" value="Edit"></a></td>
-      <td><a href="?action=deleteDepartment&id=${department.id}"><input type="button" value="Delete"></a></td>
-      <td><a href="?action=showEmployees&id=${department.id}"><input type="button" value="Show employees"></a></td>
+      <td><a href="?action=editDepartment&id=<c:out value="${department.id}"/>"><input type="button" value="Edit"></a></td>
+      <td><a href="?action=deleteDepartment&id=<c:out value="${department.id}"/>"><input type="button" value="Delete"></a></td>
+      <td><a href="?action=showEmployees&id=<c:out value="${department.id}"/>"><input type="button" value="Show employees"></a></td>
     </tr>
   </c:forEach>
   </table>
   <br>
 </form>
-<form action="?action=showDepartmentsForm" method="post">
-  <input type="submit" name="action" value="add new department">
+<form method="get">
+  <input type="submit" name="action" value="showDepartmentsForm">
 </form>
 </body>
 </html>

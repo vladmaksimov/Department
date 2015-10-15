@@ -4,6 +4,7 @@ package com.department.service.employee.impl;
 import com.department.dao.employees.EmployeeDao;
 import com.department.dao.employees.impl.EmployeeDaoImpl;
 import com.department.exeption.ValidateException;
+import com.department.model.Department;
 import com.department.model.Employee;
 import com.department.service.employee.EmployeeService;
 import com.department.utils.validator.DataValidator;
@@ -24,12 +25,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         dao.addOrEditEmployee(employee);
     }
 
-    public void deleteEmployee(Integer id) {
-        dao.delete(id);
+    public void deleteEmployee(Employee employee) {
+        dao.delete(employee);
     }
 
-    public List<Employee> getAllEmployees(Integer id) {
-        return dao.getAllEmployees(id);
+    public List<Employee> getAllEmployees(Department department) {
+        return dao.getAllEmployees(department);
     }
 
     public Employee getOneEmployee(Integer id) {

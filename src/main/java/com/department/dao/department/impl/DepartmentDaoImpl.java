@@ -71,7 +71,4 @@ public class DepartmentDaoImpl implements DepartmentDao {
         return list;
     }
 
-//    public Set<String> getNames() {
-//        return null;
-//    }
 }

@@ -2,6 +2,7 @@ package com.department.controller.processor.impl.employees;
 
 import com.department.controller.processor.Processor;
 import com.department.exeption.ValidateException;
+import com.department.model.Department;
 import com.department.model.Employee;
 import com.department.service.department.DepartmentService;
 import com.department.service.department.impl.DepartmentServiceImpl;
@@ -22,16 +23,17 @@ public class AddEmployee implements Processor {
         Employee employee = new Employee();
         EmployeeService employeeService = new EmployeeServiceImpl();
         DepartmentService departmentService = new DepartmentServiceImpl();
+        Department department = departmentService.getOneDepartment(GetDataUtil.getInteger(req, "departmentId"));
         employee.setId(GetDataUtil.getInteger(req, "id"));
         employee.setName(req.getParameter("name"));
         employee.setEmail(req.getParameter("email"));
         employee.setDate(GetDataUtil.getSqlDate(req, "date"));
-        employee.setDepartmentId(GetDataUtil.getInteger(req, "departmentId"));
+        employee.setDepartment(department);
         employee.setSalary(GetDataUtil.getFloat(req, "salary"));
         try {
             employeeService.addOrUpdateEmployee(employee);
             req.setAttribute("department", departmentService.getOneDepartment(GetDataUtil.getInteger(req, "departmentId")));
-            req.setAttribute("employeeList", employeeService.getAllEmployees(GetDataUtil.getInteger(req, "departmentId")));
+            req.setAttribute("employeeList", employeeService.getAllEmployees(department));
             req.getRequestDispatcher("jsp/employees/showEmployees.jsp").forward(req, resp);
         } catch (ValidateException e) {
             req.setAttribute("department", departmentService.getOneDepartment(GetDataUtil.getInteger(req, "departmentId")));

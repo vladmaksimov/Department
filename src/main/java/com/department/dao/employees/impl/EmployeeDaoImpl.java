@@ -1,24 +1,20 @@
 package com.department.dao.employees.impl;
 
 import com.department.dao.employees.EmployeeDao;
+import com.department.model.Department;
 import com.department.model.Employee;
-import com.department.utils.DBConnector;
-import com.department.utils.GetDataUtil;
 import com.department.utils.hibernate.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class EmployeeDaoImpl implements EmployeeDao {
     public void addOrEditEmployee(Employee employee) {
         Session session;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+                session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             if(employee.getId() != null) {
                 session.update(employee);
@@ -33,9 +29,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }
     }
 
-    public void delete(Integer id) {
-        Employee employee = new Employee();
-        employee.setId(id);
+    public void delete(Employee employee) {
         Session session;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -63,12 +57,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return employee;
     }
 
-    public List<Employee> getAllEmployees(Integer id) {
+    public List<Employee> getAllEmployees(Department department) {
         List<Employee> list = new ArrayList<Employee>();
         Session session;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            list = session.createCriteria(Employee.class).list();
+            list = (List<Employee>) session.createQuery(GET_ALL).setParameter("department", department).list();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
@@ -76,19 +70,4 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }
         return list;
     }
-
-//    public Set<String> getEmails() {
-//        Connection connection = DBConnector.getConnection();
-//        Set<String> emails = new HashSet<String>();
-//        try {
-//            PreparedStatement preparedStatement = connection.prepareStatement(GET_EMAILS);
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//            while (resultSet.next()) {
-//                emails.add(resultSet.getString("email"));
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return emails;
-//    }
 }

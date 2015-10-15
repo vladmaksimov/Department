@@ -1,6 +1,8 @@
 package com.department.controller.processor.impl.employees;
 
 import com.department.controller.processor.Processor;
+import com.department.model.Department;
+import com.department.model.Employee;
 import com.department.service.department.DepartmentService;
 import com.department.service.department.impl.DepartmentServiceImpl;
 import com.department.service.employee.EmployeeService;
@@ -20,9 +22,11 @@ public class DeleteEmployees implements Processor {
         EmployeeService service = new EmployeeServiceImpl();
         DepartmentService departmentService = new DepartmentServiceImpl();
         EmployeeService employeeService = new EmployeeServiceImpl();
-        service.deleteEmployee(GetDataUtil.getInteger(req, "id"));
-        req.setAttribute("department", departmentService.getOneDepartment(GetDataUtil.getInteger(req, "departmentId")));
-        req.setAttribute("employeeList", employeeService.getAllEmployees(GetDataUtil.getInteger(req, "departmentId")));
+        Employee employee = employeeService.getOneEmployee(GetDataUtil.getInteger(req, "id"));
+        service.deleteEmployee(employee);
+        Department department = departmentService.getOneDepartment(GetDataUtil.getInteger(req, "departmentId"));
+        req.setAttribute("department", department);
+        req.setAttribute("employeeList", employeeService.getAllEmployees(department));
         req.getRequestDispatcher("jsp/employees/showEmployees.jsp").forward(req, resp);
     }
 }
