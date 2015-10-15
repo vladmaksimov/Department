@@ -5,17 +5,16 @@ import com.department.dao.department.impl.DepartmentDaoImpl;
 import com.department.model.Department;
 import net.sf.oval.constraint.CheckWithCheck;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class ValidateDepartmentName implements CheckWithCheck.SimpleCheck {
-//    private Set<String> nameSet = new HashSet<String>();
-//    private DepartmentDao dao = new DepartmentDaoImpl();
-//    private Department department;
+    DepartmentDao dao = new DepartmentDaoImpl();
+
     public boolean isSatisfied(Object o, Object o1) {
-//        department = (Department) o;
-//        nameSet = dao.getNames();
-//        return !nameSet.contains(department.getName());
-        return true;
+        Department department = (Department) o;
+        Department dbDepartment = dao.getByName(o1.toString());
+        if (dbDepartment != null) {
+            return dbDepartment.getId().equals(department.getId());
+        } else {
+            return true;
+        }
     }
 }

@@ -5,6 +5,7 @@ import com.department.model.Department;
 import com.department.model.Employee;
 import com.department.utils.hibernate.HibernateUtil;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.util.ArrayList;
@@ -57,12 +58,26 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return employee;
     }
 
+    public Employee getByEmail(String email) {
+        Employee employee = null;
+        Session session;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            employee = (Employee) session.createQuery(GET_BY_EMAIL).setParameter("email", email).uniqueResult();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            HibernateUtil.shutdown();
+        }
+        return employee;
+    }
+
     public List<Employee> getAllEmployees(Department department) {
         List<Employee> list = new ArrayList<Employee>();
         Session session;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            list = (List<Employee>) session.createQuery(GET_ALL).setParameter("department", department).list();
+            list =  session.createQuery(GET_ALL).setParameter("department", department).list();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
@@ -70,4 +85,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }
         return list;
     }
+
+
 }

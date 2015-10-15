@@ -57,6 +57,19 @@ public class DepartmentDaoImpl implements DepartmentDao {
         return department;
     }
 
+    public Department getByName(String name) {
+        Department department = null;
+        Session session;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            department = (Department) session.createQuery(GET_BY_NAME).setParameter("name", name).uniqueResult();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+        }
+        return department;
+    }
+
     public List<Department> getAll() {
         List<Department> list = null;
         Session session;
