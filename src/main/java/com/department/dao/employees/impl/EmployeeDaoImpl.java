@@ -5,7 +5,6 @@ import com.department.model.Department;
 import com.department.model.Employee;
 import com.department.utils.hibernate.HibernateUtil;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.util.ArrayList;

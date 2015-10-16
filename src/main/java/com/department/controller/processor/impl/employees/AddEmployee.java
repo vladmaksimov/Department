@@ -25,8 +25,8 @@ public class AddEmployee implements Processor {
         DepartmentService departmentService = new DepartmentServiceImpl();
         Department department = departmentService.getOneDepartment(GetDataUtil.getInteger(req, "departmentId"));
         employee.setId(GetDataUtil.getInteger(req, "id"));
-        employee.setName(req.getParameter("name"));
-        employee.setEmail(req.getParameter("email"));
+        employee.setName(req.getParameter("name").trim());
+        employee.setEmail(req.getParameter("email").trim());
         employee.setDate(GetDataUtil.getSqlDate(req, "date"));
         employee.setDepartment(department);
         employee.setSalary(GetDataUtil.getFloat(req, "salary"));

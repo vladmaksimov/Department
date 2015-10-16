@@ -22,7 +22,7 @@ public class AddOrEditDepartment implements Processor {
         if (GetDataUtil.getInteger(req,"id")!= null){
             department.setId(Integer.parseInt(req.getParameter("id")));
         }
-        department.setName(req.getParameter("name"));
+        department.setName(req.getParameter("name").trim());
         try {
             service.addOrUpdateDepartment(department);
             req.setAttribute("departmentsList", service.getAllDepartments());
