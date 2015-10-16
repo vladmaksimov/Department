@@ -18,7 +18,6 @@
         body {
             margin: auto;
         }
-
         .parent {
             margin: 20px;
             padding-right: 60%;
@@ -27,24 +26,22 @@
         body {
             margin: auto;
         }
-
         .text {
             padding-left: 20px;
         }
     </style>
 </head>
 <body>
-<form name="Department Form" method="get">
+<form name="Department Form" method="post">
     <div class="parent">
-        <table class="parent table-bordered">
-            <col width="600" valign="top">
-            <col width="150" valign="top">
-            <col width="150" valign="top">
-            <col width="150" valign="top">
+        <table class="table table-bordered">
+            <thead>
             <tr>
                 <td>Department name</td>
                 <td colspan="3">Action</td>
             </tr>
+            </thead>
+            <tbody>
             <c:forEach items="${departmentsList}" var="department">
                 <tr>
                     <td><c:out value="${department.name}"/></td>
@@ -54,25 +51,31 @@
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-default btn-md" type="submit" name="action" value="deleteDepartment">Delete
+                        <button class="btn btn-default btn-md" type="submit" name="action" value="deleteDepartment">
+                            Delete
                             <input type="hidden" name="id" value="<c:out value="${department.id}"/>">
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-default btn-md" type="submit" name="action" value="showEmployees">Show employees
+                        <button class="btn btn-default btn-md" type="submit" name="action" value="showEmployees">Show
+                            employees
                             <input type="hidden" name="id" value="<c:out value="${department.id}"/>">
                         </button>
                     </td>
                 </tr>
             </c:forEach>
+            </tbody>
         </table>
     </div>
     <br>
 </form>
 
-<form name="Add new Department" method="post">
-    <button class="btn btn-default" type="submit" name="action" value="showDepartmentsForm">Add new Department</button>
-</form>
+<div class="text">
+    <form name="Add new Department" method="post">
+        <button class="btn btn-default" type="submit" name="action" value="showDepartmentsForm">Add new Department
+        </button>
+    </form>
+</div>
 
 </body>
 </html>

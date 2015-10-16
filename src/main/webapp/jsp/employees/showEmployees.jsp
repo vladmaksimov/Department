@@ -65,6 +65,7 @@
         </table>
     </div>
 </form>
+
 <form name="Add new employee" method="post">
     <div class="text">
         <button class="btn btn-default" type="submit" name="action" value="showEmployeeForm">Add new employee

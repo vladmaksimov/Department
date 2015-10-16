@@ -13,6 +13,7 @@ public interface EmployeeDao {
     String GET_ALL = "SELECT * FROM employees WHERE departmentId=?";
     String UPDATE = "UPDATE employees SET name = ?, email = ?, date = ?, departmentId = ?, salary = ? WHERE id=?";
     String GET_EMAILS = "SELECT email FROM employees";
+    String GET_BY_NAME = "SELECT * FROM employees WHERE email = ?";
 
     void addOrEditEmployee(Employee employee);
 
@@ -23,4 +24,6 @@ public interface EmployeeDao {
     List<Employee> getAllEmployees(Integer id);
 
     Set<String> getEmails();
+
+    Employee getByEmail(String email);
 }

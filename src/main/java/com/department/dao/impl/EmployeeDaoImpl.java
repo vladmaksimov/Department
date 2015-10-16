@@ -123,4 +123,29 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }
         return emails;
     }
+
+    public Employee getByEmail(String email) {
+        Connection connection = null;
+        Employee employee = null;
+        try {
+            connection = DBConnector.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_BY_NAME);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                employee = new Employee();
+                employee.setId(resultSet.getInt("id"));
+                employee.setName(resultSet.getString("name"));
+                employee.setEmail(resultSet.getString("email"));
+                employee.setDate(resultSet.getDate("date"));
+                employee.setDepartmentId(resultSet.getInt("departmentId"));
+                employee.setSalary(resultSet.getFloat("salary"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBConnector.closeConnection(connection);
+        }
+        return employee;
+    }
 }
