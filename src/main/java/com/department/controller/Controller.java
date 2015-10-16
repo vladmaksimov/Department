@@ -17,7 +17,7 @@ import java.util.Map;
  * Created on 16.09.2015.
  */
 public class Controller extends HttpServlet {
-    private static final Map<String, Processor> ACTIONMAP = new HashMap<String, Processor>() {{
+    private static final Map<String, Processor> ACTION_MAP = new HashMap<String, Processor>() {{
         put("editEmployee", new ShowEditEmployeeForm());
         put("showEmployeeForm", new ShowAddEmployeeForm());
         put("addOrEditEmployee", new AddEmployee());
@@ -33,13 +33,13 @@ public class Controller extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if (!ACTIONMAP.containsKey(action)) {
+        if (!ACTION_MAP.containsKey(action)) {
             action = "showDepartments";
         }
-        Processor processor = ACTIONMAP.get(action);
+        Processor processor = ACTION_MAP.get(action);
         try {
             processor.service(req, resp);
-        } catch (ValidateException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

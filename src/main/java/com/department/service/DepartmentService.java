@@ -1,4 +1,4 @@
-package com.department.service.department;
+package com.department.service;
 
 import com.department.exeption.ValidateException;
 import com.department.model.Department;

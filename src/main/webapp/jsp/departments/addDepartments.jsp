@@ -1,22 +1,51 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style>
+    <%@include file='/css/bootstrap.css' %>
+</style>
 <html>
 <head>
     <title></title>
+    <link type="text/css" href="<c:url value="/css/bootstrap.css"/>" rel="stylesheet"/>
+    <style>
+        body {
+            margin: auto;
+        }
+
+        .parent {
+            margin: 20px;
+            padding-right: 70%;
+        }
+
+        body {
+            margin: auto;
+        }
+
+        .text {
+            padding-left: 20px;
+        }
+    </style>
 </head>
 <body>
-<form name="controller" method="get">
-    <strong>Enter department name:</strong> <br>
-    <input type="hidden" name="id" value="${department.id}">
-    <input type="text" name="name" value="${department.name}"><br>
-    <font color="red" size="2">${errors.name}</font><br>
-    <input type="submit" name="action" value="addDepartment">
+<form name="Add of edit Departments" method="post">
+    <div class="parent">
+        <div class="form-group">
+            <input type="hidden" name="id" value="<c:out value=""/>${department.id}">
+            <label>Enter department name:</label>
+            <font color="red" size="2">
+                <c:out value="${errors.name}"/>
+            </font> <br>
+            <input type="text" class="form-control" name="name" placeholder="Input department name"
+                   value="${department.name}">
+        </div>
+    </div>
 
-    <div/>
+    <button type="submit" class="btn btn-default" name="action" value="addDepartment">Submit</button>
 </form>
 <br>
 
-<form action="?action=showDepartments" method="post">
-    <input type="submit" value="Back to department list">
+<form name="Back to department list" method="post">
+    <button type="submit" class="btn btn-default" name="action" value="showDepartments">Back to department list</button>
 </form>
 </body>
 </html>

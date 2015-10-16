@@ -3,10 +3,10 @@ package com.department.controller.processor.impl.employees;
 import com.department.controller.processor.Processor;
 import com.department.exeption.ValidateException;
 import com.department.model.Employee;
-import com.department.service.department.DepartmentService;
-import com.department.service.department.impl.DepartmentServiceImpl;
-import com.department.service.employee.EmployeeService;
-import com.department.service.employee.impl.EmployeeServiceImpl;
+import com.department.service.DepartmentService;
+import com.department.service.impl.DepartmentServiceImpl;
+import com.department.service.EmployeeService;
+import com.department.service.impl.EmployeeServiceImpl;
 import com.department.utils.GetDataUtil;
 import net.sf.oval.guard.Guarded;
 
@@ -36,7 +36,7 @@ public class AddEmployee implements Processor {
         } catch (ValidateException e) {
             req.setAttribute("department", departmentService.getOneDepartment(GetDataUtil.getInteger(req, "departmentId")));
             req.setAttribute("employee", employee);
-            req.setAttribute("errors", e.getErrors());
+            req.setAttribute("error", e.getErrors());
             req.getRequestDispatcher("jsp/employees/addEmployees.jsp").forward(req, resp);
         }
     }

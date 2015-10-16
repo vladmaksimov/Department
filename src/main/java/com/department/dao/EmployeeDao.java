@@ -1,4 +1,4 @@
-package com.department.dao.employees;
+package com.department.dao;
 
 import com.department.model.Employee;
 

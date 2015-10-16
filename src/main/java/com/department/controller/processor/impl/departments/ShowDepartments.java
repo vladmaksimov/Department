@@ -1,8 +1,8 @@
 package com.department.controller.processor.impl.departments;
 
 import com.department.controller.processor.Processor;
-import com.department.service.department.DepartmentService;
-import com.department.service.department.impl.DepartmentServiceImpl;
+import com.department.service.DepartmentService;
+import com.department.service.impl.DepartmentServiceImpl;
 
 
 import javax.servlet.ServletException;
@@ -17,6 +17,6 @@ public class ShowDepartments implements Processor {
     public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DepartmentService service = new DepartmentServiceImpl();
         req.setAttribute("departmentsList", service.getAllDepartments());
-        req.getRequestDispatcher("jsp/departments/showDepartments.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/departments/showDepartments.jsp").forward(req, resp);
     }
 }

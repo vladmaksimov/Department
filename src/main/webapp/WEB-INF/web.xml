@@ -6,15 +6,12 @@
          version="2.5">
 
   <display-name>Archetype Created Web Application</display-name>
-
     <servlet>
-        <servlet-name>controller</servlet-name>
+        <servlet-name>Controller</servlet-name>
         <servlet-class>com.department.controller.Controller</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>controller</servlet-name>
+        <servlet-name>Controller</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
 </web-app>

@@ -1,10 +1,10 @@
 package com.department.controller.processor.impl.employees;
 
 import com.department.controller.processor.Processor;
-import com.department.service.department.DepartmentService;
-import com.department.service.department.impl.DepartmentServiceImpl;
-import com.department.service.employee.EmployeeService;
-import com.department.service.employee.impl.EmployeeServiceImpl;
+import com.department.service.DepartmentService;
+import com.department.service.impl.DepartmentServiceImpl;
+import com.department.service.EmployeeService;
+import com.department.service.impl.EmployeeServiceImpl;
 import com.department.utils.GetDataUtil;
 
 import javax.servlet.ServletException;

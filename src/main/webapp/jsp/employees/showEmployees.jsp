@@ -1,42 +1,82 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+    <%@include file='/css/bootstrap.css' %>
+</style>
 <html>
 <head>
-    <title></title>
+    <title>Employee list</title>
+    <style>
+        body {
+            margin: auto;
+        }
+
+        .parent {
+            margin: 20px;
+            padding-right: 50%;
+        }
+
+        body {
+            margin: auto;
+        }
+
+        .text {
+            padding-left: 20px;
+        }
+    </style>
+    <link type="text/css" href="<c:url value="/css/bootstrap.css"/>" rel="stylesheet"/>
 </head>
 <body>
-<form name="controller" method="post">
+<form name="show employees" method="post">
     <input hidden value="${department.id}">
 
-    <h2>Department: ${department.name}</h2>
-    <table border="1">
-        <tr>
-            <td>User name</td>
-            <td>User email</td>
-            <td>Birthday</td>
-            <td>Salary</td>
-            <td colspan="2" align="center">Actions</td>
-        </tr>
-
-        <c:forEach items="${employeeList}" var="employee">
+    <div class="text"><h2>Department: <c:out value="${department.name}"/></h2></div>
+    <div class="parent">
+        <table class="table table-striped">
+            <thead>
             <tr>
-                <td><c:out value="${employee.name}"/></td>
-                <td><c:out value="${employee.email}"/></td>
-                <td><c:out value="${employee.date}"/></td>
-                <td><c:out value="${employee.salary}"/></td>
-                <td><a href="?action=editEmployee&id=${employee.id}"><input type="button" value="Edit"></a></td>
-                <td><a href="?action=deleteEmployee&id=${employee.id}&departmentId=${employee.departmentId}"><input
-                        type="button" value="Delete"></a></td>
+                <td>User name</td>
+                <td>User email</td>
+                <td>Birthday</td>
+                <td>Salary</td>
+                <td colspan="2" align="center">Actions</td>
             </tr>
-        </c:forEach>
-    </table>
-    <br> <br>
+            </thead>
+            <tbody>
+            <c:forEach items="${employeeList}" var="employee">
+                <tr>
+                    <td><c:out value="${employee.name}"/></td>
+                    <td><c:out value="${employee.email}"/></td>
+                    <td><c:out value="${employee.date}"/></td>
+                    <td><c:out value="${employee.salary}"/></td>
+                    <td>
+                        <button class="btn btn-default btn-sm" type="submit" name="action" value="editEmployee">Edit
+                            <input type="hidden" name="id" value="<c:out value="${employee.id}"/>">
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-default btn-sm" type="submit" name="action" value="deleteEmployee">Delete
+                            <input type="hidden" name="id" value="<c:out value="${employee.id}"/>">
+                        </button>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
 </form>
-<form action="?action=showEmployeeForm&id=${department.id}" method="post">
-    <input type="submit" value="Add new employee">
+<form name="Add new employee" method="post">
+    <div class="text">
+        <button class="btn btn-default" type="submit" name="action" value="showEmployeeForm">Add new employee
+            <input type="hidden" name="id" value="${department.id}">
+        </button>
+    </div>
 </form>
-<form action="showDepartments" method="post">
-    <input type="submit" value="Back to Department list">
-</form>
+<div class="text">
+    <form name="Back to department list" method="post">
+        <button type="submit" class="btn btn-default" name="action" value="showDepartments">Back to department list
+        </button>
+    </form>
+</div>
 </body>
 </html>

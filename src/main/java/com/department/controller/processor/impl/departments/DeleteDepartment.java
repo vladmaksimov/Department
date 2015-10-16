@@ -1,8 +1,8 @@
 package com.department.controller.processor.impl.departments;
 
 import com.department.controller.processor.Processor;
-import com.department.service.department.DepartmentService;
-import com.department.service.department.impl.DepartmentServiceImpl;
+import com.department.service.DepartmentService;
+import com.department.service.impl.DepartmentServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

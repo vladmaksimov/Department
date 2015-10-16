@@ -3,8 +3,8 @@ package com.department.controller.processor.impl.departments;
 import com.department.controller.processor.Processor;
 import com.department.exeption.ValidateException;
 import com.department.model.Department;
-import com.department.service.department.DepartmentService;
-import com.department.service.department.impl.DepartmentServiceImpl;
+import com.department.service.DepartmentService;
+import com.department.service.impl.DepartmentServiceImpl;
 import com.department.utils.GetDataUtil;
 
 import javax.servlet.ServletException;
@@ -30,7 +30,7 @@ public class AddOrEditDepartment implements Processor {
         } catch (ValidateException e) {
             req.setAttribute("department", department);
             req.setAttribute("errors", e.getErrors());
-            req.getRequestDispatcher("jsp/departments/addDepartments.jsp").include(req, resp);
+            req.getRequestDispatcher("jsp/departments/addDepartments.jsp").forward(req, resp);
         }
     }
 }

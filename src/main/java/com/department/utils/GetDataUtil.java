@@ -6,11 +6,12 @@ import java.util.Date;
 
 public class GetDataUtil {
     public static Integer getInteger(HttpServletRequest req, String s) {
-        if (!req.getParameter(s).isEmpty()) {
+        try {
             return Integer.parseInt(req.getParameter(s));
-        } else {
-            return null;
+        } catch (Exception ignored) {
         }
+
+        return null;
     }
 
     public static Date getDate(HttpServletRequest req, String date) {

@@ -1,9 +1,8 @@
-package com.department.dao.employees.impl;
+package com.department.dao.impl;
 
-import com.department.dao.employees.EmployeeDao;
+import com.department.dao.EmployeeDao;
 import com.department.model.Employee;
 import com.department.utils.DBConnector;
-import com.department.utils.GetDataUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -33,6 +32,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
         } finally {
             DBConnector.closeConnection(connection);
         }
@@ -46,6 +47,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         } finally {
             DBConnector.closeConnection(connection);
@@ -68,6 +71,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 employee.setSalary(resultSet.getFloat("salary"));
             }
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         } finally {
             DBConnector.closeConnection(connection);
@@ -94,6 +99,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
         } finally {
             DBConnector.closeConnection(connection);
         }
@@ -110,6 +117,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 emails.add(resultSet.getString("email"));
             }
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         }
         return emails;

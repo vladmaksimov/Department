@@ -1,19 +1,19 @@
-package com.department.service.department.impl;
+package com.department.service.impl;
 
 
 
-import com.department.dao.department.DepartmentDao;
-import com.department.dao.department.impl.DepartmentDaoImpl;
+import com.department.dao.DepartmentDao;
+import com.department.dao.impl.DepartmentDaoImpl;
 import com.department.exeption.ValidateException;
 import com.department.model.Department;
-import com.department.service.department.DepartmentService;
+import com.department.service.DepartmentService;
 import com.department.utils.validator.DataValidator;
 
 import java.util.List;
 import java.util.Map;
 
 public class DepartmentServiceImpl implements DepartmentService {
-    DataValidator validator = new DataValidator();
+    private DataValidator validator = new DataValidator();
 
     private DepartmentDao dao = new DepartmentDaoImpl();
 

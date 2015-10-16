@@ -1,11 +1,7 @@
 package com.department.model;
 
-import com.department.dao.department.DepartmentDao;
-import com.department.dao.department.impl.DepartmentDaoImpl;
-import net.sf.oval.constraint.Length;
-import net.sf.oval.constraint.NotEmpty;
-import net.sf.oval.constraint.NotNull;
-import net.sf.oval.constraint.ValidateWithMethod;
+import com.department.utils.validator.ValidateDepartmentName;
+import net.sf.oval.constraint.*;
 
 /**
  * Created on 16.09.2015.
@@ -15,7 +11,7 @@ public class Department {
     @NotNull (message = "Field name is empty")
     @NotEmpty (message = "Field name is empty")
     @Length(min = 1, max = 20, message = "insert minimum 1 char")
-    @ValidateWithMethod(methodName = "existName", parameterType = String.class, message = "This name already exist")
+    @CheckWith(value = ValidateDepartmentName.class, message = "This name already exist")
     private String name;
 
     public Integer getId() {
@@ -32,10 +28,5 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public boolean existName(String name) {
-        DepartmentDao dao = new DepartmentDaoImpl();
-        return !dao.getNames().contains(name);
     }
 }

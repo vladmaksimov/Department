@@ -16,7 +16,7 @@ public class Employee {
     @Length(min = 1, max = 20, message = "insert minimum 1 char")
     private String name;
 
-    @NotNull(message = "Field date is empty")
+    @NotNull(message = "Incorrect date format")
     @NotEmpty(message = "Field date is empty")
     private Date date;
     private Integer departmentId;

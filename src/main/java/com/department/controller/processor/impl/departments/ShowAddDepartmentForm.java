@@ -9,7 +9,6 @@ import java.io.IOException;
 
 public class ShowAddDepartmentForm implements Processor {
     public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.getRequestDispatcher("jsp/departments/addDepartments.jsp").forward(req, resp);
     }
 }
