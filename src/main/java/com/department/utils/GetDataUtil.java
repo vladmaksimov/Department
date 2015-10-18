@@ -10,13 +10,11 @@ public class GetDataUtil {
             return Integer.parseInt(req.getParameter(s));
         } catch (Exception ignored) {
         }
-
         return null;
     }
 
     public static Date getDate(HttpServletRequest req, String date) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-//        Date date = null;
         try {
             return formatter.parse(req.getParameter(date));
         } catch (Exception ignored) {

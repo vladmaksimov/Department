@@ -6,11 +6,9 @@ import com.department.utils.DBConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class EmployeeDaoImpl implements EmployeeDao {
+public class EmployeeDaoImpl implements EmployeeDao  {
     public void addOrEditEmployee(Employee employee) {
         String request;
         if (employee.getId()!=null) {
@@ -105,23 +103,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
             DBConnector.closeConnection(connection);
         }
         return list;
-    }
-
-    public Set<String> getEmails() {
-        Connection connection = DBConnector.getConnection();
-        Set<String> emails = new HashSet<String>();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(GET_EMAILS);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                emails.add(resultSet.getString("email"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        return emails;
     }
 
     public Employee getByEmail(String email) {

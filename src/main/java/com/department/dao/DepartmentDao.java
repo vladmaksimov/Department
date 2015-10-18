@@ -3,7 +3,6 @@ package com.department.dao;
 import com.department.model.Department;
 
 import java.util.List;
-import java.util.Set;
 
 public interface DepartmentDao {
     String ADD = "INSERT INTO departments(name) VALUES(?)";

@@ -35,8 +35,4 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee getOneEmployee(Integer id) {
         return dao.getOneEmployee(id);
     }
-
-//    public static boolean existEmail(String email) {
-//        return !dao.getEmails().contains(email);
-//    }
 }

@@ -11,7 +11,7 @@ public class ValidateEmail implements CheckWithCheck.SimpleCheck{
         Employee employee = (Employee)o;
         Employee dbEmployee = dao.getByEmail(o1.toString());
         if(dbEmployee != null){
-            return dbEmployee.getId().equals(employee.getId());
+            return !dbEmployee.getId().equals(employee.getId());
         }
         return true;
     }

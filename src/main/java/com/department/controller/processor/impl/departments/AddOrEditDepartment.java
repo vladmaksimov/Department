@@ -25,8 +25,7 @@ public class AddOrEditDepartment implements Processor {
         department.setName(req.getParameter("name"));
         try {
             service.addOrUpdateDepartment(department);
-            req.setAttribute("departmentsList", service.getAllDepartments());
-            req.getRequestDispatcher("jsp/departments/showDepartments.jsp").forward(req, resp);
+            resp.sendRedirect("/");
         } catch (ValidateException e) {
             req.setAttribute("department", department);
             req.setAttribute("errors", e.getErrors());

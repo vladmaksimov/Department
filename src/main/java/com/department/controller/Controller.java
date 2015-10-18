@@ -27,6 +27,7 @@ public class Controller extends HttpServlet {
         put("showDepartments", new ShowDepartments());
         put("showDepartmentsForm", new ShowAddDepartmentForm());
         put("editDepartment", new ShowEditDepartmentForm());
+        put("backButton", new BackButton());
     }};
 
     @Override
@@ -39,7 +40,7 @@ public class Controller extends HttpServlet {
         try {
             processor.service(req, resp);
         } catch (Exception e) {
-            e.printStackTrace();
+            req.getRequestDispatcher("jsp/error.jsp");
         }
     }
 
