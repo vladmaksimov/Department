@@ -16,11 +16,6 @@
 <body>
 <div class="container">
     <h1 style="text-align: center"><c:out value="${error}"/></h1>
-    <%--<form name="Back to department list" method="get">--%>
-    <%--<button type="submit" class="btn btn-default" name="action" value="backButton">Back to department list--%>
-    <%--</button>--%>
-    <%--</form>--%>
 </div>
-
 </body>
 </html>
