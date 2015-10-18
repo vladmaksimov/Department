@@ -10,8 +10,7 @@
 <html>
 <head>
     <title>Error</title>
-    <%--<link href="<c:url value="/css/bootstrap.css" />" rel="stylesheet">--%>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="<c:url value="/css/bootstrap.css" />" rel="stylesheet">
 </head>
 <body>
 <div class="container">

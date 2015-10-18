@@ -4,8 +4,7 @@
 <html>
 <head>
     <title>Add or edit employee</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <%--<link type="text/css" href= "<c:url value="/css/bootstrap.css"/>" rel="stylesheet"/>--%>
+    <link type="text/css" href= "<c:url value="/css/bootstrap.css"/>" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">

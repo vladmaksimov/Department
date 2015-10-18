@@ -1,14 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<style>--%>
-    <%--<%@include file='/css/bootstrap.css' %>--%>
-<%--</style>--%>
 <html>
 <head>
     <title>Departments</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <%--<link type="text/css" href="<c:url value="/css/bootstrap.css"/>" rel="stylesheet"/>--%>
+    <link type="text/css" href="<c:url value="/css/bootstrap.css"/>" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
