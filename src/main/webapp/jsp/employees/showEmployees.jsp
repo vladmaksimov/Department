@@ -14,14 +14,14 @@
 
     <h2>Department: <c:out value="${department.name}"/></h2>
 
-    <table class="table table-striped">
+    <table class="table table-striped" style="width: 800px">
         <thead>
         <tr>
             <th>User name</th>
             <th>User email</th>
             <th>Birthday</th>
             <th>Salary</th>
-            <th colspan="2" align="center">Actions</th>
+            <th colspan="2" style="text-align: center">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@
                 <td><c:out value="${employee.date}"/></td>
                 <td><c:out value="${employee.salary}"/></td>
                 <td>
-                    <form name="edit" action="edit" method="post">
+                    <form name="edit" action="edit" method="post" style="margin-bottom: 0px">
                         <button class="btn btn-default btn-sm" type="submit" name="action" value="editEmployee">
                             Edit
                         </button>
@@ -40,7 +40,7 @@
                     </form>
                 </td>
                 <td>
-                    <form name="delete" method="post">
+                    <form name="delete" method="post" style="margin-bottom: 0px">
                         <button class="btn btn-default btn-sm" type="submit" name="action" value="deleteEmployee">Delete</button>
                         <input type="hidden" name="id" value="<c:out value="${employee.id}"/>">
                         <input type="hidden" name="departmentId" value="${department.id}">
@@ -61,6 +61,5 @@
         <button type="submit" class="btn btn-default" name="action" value="backButton">Back to department list</button>
     </form>
 </div>
-
 </body>
 </html>

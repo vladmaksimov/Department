@@ -1,20 +1,20 @@
 package com.department.dao.impl;
 
 import com.department.dao.DepartmentDao;
+import com.department.exeption.ErrorException;
 import com.department.model.Department;
 import com.department.utils.DBConnector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentDaoImpl implements DepartmentDao {
 
 
-    public void add(Department department) {
+    public void add(Department department) throws ErrorException {
         String request;
         if (department.getId() != null) {
             request = UPDATE;
@@ -31,12 +31,13 @@ public class DepartmentDaoImpl implements DepartmentDao {
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
+            throw new ErrorException("Failed to add department");
         } finally {
             DBConnector.closeConnection(connection);
         }
     }
 
-    public void delete(Integer id) {
+    public void delete(Integer id) throws ErrorException{
         Connection connection = DBConnector.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE);
@@ -44,16 +45,16 @@ public class DepartmentDaoImpl implements DepartmentDao {
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
+            throw new ErrorException("Failed to remove the department");
         } finally {
             DBConnector.closeConnection(connection);
         }
     }
 
-    public Department getOne(Integer id) {
+    public Department getOne(Integer id) throws ErrorException {
         Department department = new Department();
-        Connection connection = null;
+        Connection connection = DBConnector.getConnection();
         try {
-            connection = DBConnector.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ONE);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -63,18 +64,17 @@ public class DepartmentDaoImpl implements DepartmentDao {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            throw new ErrorException("Error getting data from the database");
         } finally {
             DBConnector.closeConnection(connection);
         }
         return department;
     }
 
-    public List<Department> getAll() {
+    public List<Department> getAll() throws ErrorException {
         List<Department> list = new ArrayList<Department>();
-//        Connection connection = DBConnector.getConnection();
-        Connection connection = null;
+        Connection connection = DBConnector.getConnection();
         try {
-            connection = DBConnector.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -86,6 +86,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            throw new ErrorException("Error getting data from the database");
         } finally {
             DBConnector.closeConnection(connection);
         }
@@ -93,11 +94,10 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
 
-    public Department getByName(String name) {
+    public Department getByName(String name) throws ErrorException {
         Department department = null;
-        Connection connection = null;
+        Connection connection = DBConnector.getConnection();
         try {
-            connection = DBConnector.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_BY_NAME);
             preparedStatement.setString(1, name);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -106,10 +106,9 @@ public class DepartmentDaoImpl implements DepartmentDao {
                 department.setId(resultSet.getInt("id"));
                 department.setName(resultSet.getString("name"));
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (NullPointerException e) {
-            e.printStackTrace();
+            throw new ErrorException("Error getting data from the database");
         } finally {
             DBConnector.closeConnection(connection);
         }

@@ -40,8 +40,8 @@ public class Controller extends HttpServlet {
         try {
             processor.service(req, resp);
         } catch (Exception e) {
-            req.getRequestDispatcher("jsp/error.jsp");
+            req.setAttribute("error", e.getMessage());
+            req.getRequestDispatcher("jsp/error.jsp").forward(req, resp);
         }
     }
-
 }

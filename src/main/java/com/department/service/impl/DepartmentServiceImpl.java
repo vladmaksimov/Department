@@ -4,6 +4,7 @@ package com.department.service.impl;
 
 import com.department.dao.DepartmentDao;
 import com.department.dao.impl.DepartmentDaoImpl;
+import com.department.exeption.ErrorException;
 import com.department.exeption.ValidateException;
 import com.department.model.Department;
 import com.department.service.DepartmentService;
@@ -17,7 +18,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     private DepartmentDao dao = new DepartmentDaoImpl();
 
-    public void addOrUpdateDepartment(Department department) throws ValidateException {
+    public void addOrUpdateDepartment(Department department) throws ValidateException, ErrorException {
         Map<String,String> errors = validator.validate(department);
         if (errors.size() > 0) {
             throw new ValidateException("error", errors);
@@ -25,15 +26,15 @@ public class DepartmentServiceImpl implements DepartmentService {
         dao.add(department);
     }
 
-    public Department getOneDepartment(Integer id) {
+    public Department getOneDepartment(Integer id) throws ErrorException {
         return dao.getOne(id);
     }
 
-    public void deleteDepartment(Integer id) {
+    public void deleteDepartment(Integer id) throws ErrorException {
         dao.delete(id);
     }
 
-    public List<Department> getAllDepartments() {
+    public List<Department> getAllDepartments() throws ErrorException {
         return dao.getAll();
     }
 }

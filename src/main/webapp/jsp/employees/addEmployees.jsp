@@ -19,8 +19,8 @@
         <div class="text"><h2><c:out value="${department.name}"/> department</h2></div>
         <br>
 
-        <div class="row">
-            <div class="col-md-4">
+        <%--<div class="row">--%>
+            <div style="width: 400px">
                 <div class="form-group">
                     <label>Enter employee name:</label>
                     <font color="red" size="2"><c:out value="${error.name}"/></font> <br>
@@ -52,7 +52,7 @@
                            value="${employee.date}">
                 </div>
             </div>
-        </div>
+        <%--</div>--%>
         <button type="submit" class="btn btn-default" name="action" value="addOrEditEmployee">Submit</button>
     </form>
     <form name="Back to employees" action="emploee" method="post">

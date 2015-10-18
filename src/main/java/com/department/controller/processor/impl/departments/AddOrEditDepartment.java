@@ -1,6 +1,7 @@
 package com.department.controller.processor.impl.departments;
 
 import com.department.controller.processor.Processor;
+import com.department.exeption.ErrorException;
 import com.department.exeption.ValidateException;
 import com.department.model.Department;
 import com.department.service.DepartmentService;
@@ -16,7 +17,7 @@ import java.io.IOException;
  * Created on 16.09.2015.
  */
 public class AddOrEditDepartment implements Processor {
-    public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ValidateException {
+    public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ErrorException {
         Department department = new Department();
         DepartmentService service = new DepartmentServiceImpl();
         if (GetDataUtil.getInteger(req,"id")!= null){

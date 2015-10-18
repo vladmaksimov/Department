@@ -1,5 +1,7 @@
 package com.department.utils;
 
+import com.department.exeption.ErrorException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,13 +15,13 @@ public class DBConnector {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 
-    public static Connection getConnection() {
-        Connection connection = null;
+    public static Connection getConnection() throws ErrorException {
+        Connection connection;
         try {
             Class.forName(MYSQL_DRIVER);
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (Exception e) {
-//            throw new ErrorException("Ошибка соединения с Базой данных");
+            throw new ErrorException("Failed to access the database");
         }
         return connection;
     }

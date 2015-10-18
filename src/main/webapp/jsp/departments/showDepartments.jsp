@@ -19,11 +19,11 @@
 </head>
 <body>
 <div class="container">
-    <table class="table table-striped">
+    <table class="table table-striped" style="width: 800px">
         <thead>
         <tr>
-            <th>Department name</th>
-            <th colspan="3">Action</th>
+            <th style="width: 550px">Department name</th>
+            <th colspan="3" style="text-align: center; width: 250px">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -31,21 +31,21 @@
             <tr>
                 <td><c:out value="${department.name}"/></td>
                 <td>
-                    <form name="edit" method="post">
-                        <button class="btn btn-default btn-sm" type="submit" name="action" value="editDepartment">Edit</button>
-                        <input type="hidden" name="id" value="<c:out value="${department.id}"/>">
+                    <form name="edit" method="post" style="margin-bottom: 0px">
+                        <button class="btn btn-default btn-sm" type="submit" name="action" value="editDepartment" >Edit</button>
+                        <input type="hidden" name="id" value="<c:out value="${department.id}"/>" >
                     </form>
                 </td>
                 <td>
-                    <form name="delete" method="post">
-                        <button class="btn btn-default btn-sm" type="submit" name="action" value="deleteDepartment">Delete</button>
-                        <input type="hidden" name="id" value="<c:out value="${department.id}"/>">
+                    <form name="delete" method="post" style="margin-bottom: 0px">
+                        <button class="btn btn-default btn-sm" type="submit" name="action" value="deleteDepartment" >Delete</button>
+                        <input type="hidden" name="id" value="<c:out value="${department.id}"/>" >
                     </form>
                 </td>
                 <td>
-                    <form name="show employees" action="employee" method="post">
-                        <button class="btn btn-default btn-sm" type="submit" name="action" value="showEmployees">Show employees</button>
-                        <input type="hidden" name="id" value="<c:out value="${department.id}"/>">
+                    <form name="show employees" action="employee" method="post" style="margin-bottom: 0px">
+                        <button class="btn btn-default btn-sm" type="submit" name="action" value="showEmployees" >Show employees</button>
+                        <input type="hidden" name="id" value="<c:out value="${department.id}"/>" >
                     </form>
                 </td>
             </tr>

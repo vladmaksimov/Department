@@ -1,6 +1,7 @@
 package com.department.controller.processor.impl.departments;
 
 import com.department.controller.processor.Processor;
+import com.department.exeption.ErrorException;
 import com.department.model.Department;
 import com.department.service.DepartmentService;
 import com.department.service.impl.DepartmentServiceImpl;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ShowEditDepartmentForm implements Processor{
-    public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ErrorException {
         Department department;
         DepartmentService service = new DepartmentServiceImpl();
         department = service.getOneDepartment(Integer.parseInt(req.getParameter("id")));

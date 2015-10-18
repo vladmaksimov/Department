@@ -1,6 +1,7 @@
 package com.department.dao.impl;
 
 import com.department.dao.EmployeeDao;
+import com.department.exeption.ErrorException;
 import com.department.model.Employee;
 import com.department.utils.DBConnector;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDaoImpl implements EmployeeDao  {
-    public void addOrEditEmployee(Employee employee) {
+    public void addOrEditEmployee(Employee employee) throws ErrorException {
         String request;
         if (employee.getId()!=null) {
             request = UPDATE;
@@ -28,32 +29,30 @@ public class EmployeeDaoImpl implements EmployeeDao  {
                 preparedStatement.setInt(6, employee.getId());
             }
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (Exception e){
-            e.printStackTrace();
+            throw new ErrorException("Failed to add employee");
         } finally {
             DBConnector.closeConnection(connection);
         }
 
     }
 
-    public void delete(Integer id) {
+    public void delete(Integer id) throws ErrorException {
         Connection connection = DBConnector.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE);
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (Exception e){
-            e.printStackTrace();
+            throw new ErrorException("Failed to remove the employee");
         } finally {
             DBConnector.closeConnection(connection);
         }
     }
 
-    public Employee getOneEmployee(Integer id) {
+    public Employee getOneEmployee(Integer id) throws ErrorException {
         Connection connection = DBConnector.getConnection();
         Employee employee = new Employee();
         try {
@@ -68,17 +67,16 @@ public class EmployeeDaoImpl implements EmployeeDao  {
                 employee.setDepartmentId(resultSet.getInt("departmentId"));
                 employee.setSalary(resultSet.getFloat("salary"));
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (Exception e){
-            e.printStackTrace();
+            throw new ErrorException("Error getting data from the database");
         } finally {
             DBConnector.closeConnection(connection);
         }
         return employee;
     }
 
-    public List<Employee> getAllEmployees(Integer id) {
+    public List<Employee> getAllEmployees(Integer id) throws ErrorException {
         Connection connection = DBConnector.getConnection();
         List<Employee> list = new ArrayList<Employee>();
         try {
@@ -95,21 +93,19 @@ public class EmployeeDaoImpl implements EmployeeDao  {
                 employee.setSalary(resultSet.getFloat("salary"));
                 list.add(employee);
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (Exception e){
-            e.printStackTrace();
+            throw new ErrorException("Error getting data from the database");
         } finally {
             DBConnector.closeConnection(connection);
         }
         return list;
     }
 
-    public Employee getByEmail(String email) {
-        Connection connection = null;
+    public Employee getByEmail(String email) throws ErrorException {
+        Connection connection = DBConnector.getConnection();
         Employee employee = null;
         try {
-            connection = DBConnector.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_BY_NAME);
             preparedStatement.setString(1, email);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -124,6 +120,7 @@ public class EmployeeDaoImpl implements EmployeeDao  {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            throw new ErrorException("Error getting data from the database");
         } finally {
             DBConnector.closeConnection(connection);
         }

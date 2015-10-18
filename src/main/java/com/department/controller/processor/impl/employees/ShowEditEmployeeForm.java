@@ -1,6 +1,7 @@
 package com.department.controller.processor.impl.employees;
 
 import com.department.controller.processor.Processor;
+import com.department.exeption.ErrorException;
 import com.department.model.Employee;
 import com.department.service.DepartmentService;
 import com.department.service.impl.DepartmentServiceImpl;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ShowEditEmployeeForm implements Processor {
-    public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ErrorException {
         Employee employee;
         EmployeeService employeeService = new EmployeeServiceImpl();
         DepartmentService departmentService = new DepartmentServiceImpl();

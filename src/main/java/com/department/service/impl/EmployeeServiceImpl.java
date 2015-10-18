@@ -3,6 +3,7 @@ package com.department.service.impl;
 
 import com.department.dao.EmployeeDao;
 import com.department.dao.impl.EmployeeDaoImpl;
+import com.department.exeption.ErrorException;
 import com.department.exeption.ValidateException;
 import com.department.model.Employee;
 import com.department.service.EmployeeService;
@@ -16,7 +17,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private DataValidator validator = new DataValidator();
 
 
-    public void addOrUpdateEmployee(Employee employee) throws ValidateException {
+    public void addOrUpdateEmployee(Employee employee) throws ValidateException, ErrorException {
         Map<String, String> errors = validator.validate(employee);
         if (errors.size() > 0) {
             throw new ValidateException("error", errors);
@@ -24,15 +25,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         dao.addOrEditEmployee(employee);
     }
 
-    public void deleteEmployee(Integer id) {
+    public void deleteEmployee(Integer id) throws ErrorException {
         dao.delete(id);
     }
 
-    public List<Employee> getAllEmployees(Integer id) {
+    public List<Employee> getAllEmployees(Integer id) throws ErrorException {
         return dao.getAllEmployees(id);
     }
 
-    public Employee getOneEmployee(Integer id) {
+    public Employee getOneEmployee(Integer id) throws ErrorException {
         return dao.getOneEmployee(id);
     }
 }

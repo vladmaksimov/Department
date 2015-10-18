@@ -1,6 +1,7 @@
 package com.department.controller.processor.impl.employees;
 
 import com.department.controller.processor.Processor;
+import com.department.exeption.ErrorException;
 import com.department.exeption.ValidateException;
 import com.department.model.Employee;
 import com.department.service.DepartmentService;
@@ -18,7 +19,7 @@ import java.io.IOException;
 @Guarded
 public class AddEmployee implements Processor {
 
-    public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ValidateException {
+    public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ErrorException {
         Employee employee = new Employee();
         EmployeeService employeeService = new EmployeeServiceImpl();
         DepartmentService departmentService = new DepartmentServiceImpl();
