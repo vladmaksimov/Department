@@ -2,9 +2,7 @@ package com.department.service.impl;
 
 
 import com.department.dao.EmployeeDao;
-import com.department.dao.GenericDao;
 import com.department.dao.impl.EmployeeDaoImpl;
-import com.department.dao.impl.GenericDaoImpl;
 import com.department.exeption.ErrorException;
 import com.department.exeption.ValidateException;
 import com.department.model.Department;

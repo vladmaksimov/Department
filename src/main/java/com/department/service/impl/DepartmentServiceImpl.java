@@ -25,23 +25,19 @@ public class DepartmentServiceImpl implements DepartmentService {
         if (errors.size() > 0) {
             throw new ValidateException("error", errors);
         }
-//        dao.add(department);
         dao.save(department);
     }
 
     public Department getOneDepartment(Integer id) throws ErrorException {
-//        return dao.getOne(id);
         return dao.get(id);
     }
 
     public void deleteDepartment(Department department) throws ErrorException {
-//        dao.delete(department);
         dao.delete(department);
     }
 
     public List<Department> getAllDepartments() throws ErrorException {
-//        return dao.getAll();
-        return dao.getAll(Department.class);
+        return dao.getAll();
     }
 
 }

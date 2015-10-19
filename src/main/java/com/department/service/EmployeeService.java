@@ -10,11 +10,8 @@ import java.util.List;
 public interface EmployeeService {
 
     void addOrUpdateEmployee(Employee employee) throws ValidateException, ErrorException;
-
     void deleteEmployee(Employee employee) throws ErrorException;
-
     List<Employee> getAllEmployees(Department department) throws ErrorException;
-
     Employee getOneEmployee(Integer id) throws ErrorException;
 
 }
