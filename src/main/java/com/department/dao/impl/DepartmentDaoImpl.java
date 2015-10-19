@@ -30,7 +30,8 @@ public class DepartmentDaoImpl implements DepartmentDao {
             }
             preparedStatement.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println(e);
+//            e.printStackTrace();
             throw new ErrorException("Failed to add department");
         } finally {
             DBConnector.closeConnection(connection);
@@ -44,7 +45,8 @@ public class DepartmentDaoImpl implements DepartmentDao {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.err.println(e);
             throw new ErrorException("Failed to remove the department");
         } finally {
             DBConnector.closeConnection(connection);
@@ -63,7 +65,8 @@ public class DepartmentDaoImpl implements DepartmentDao {
                 department.setName(resultSet.getString("name"));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println(e);
+//            e.printStackTrace();
             throw new ErrorException("Error getting data from the database");
         } finally {
             DBConnector.closeConnection(connection);
@@ -85,7 +88,8 @@ public class DepartmentDaoImpl implements DepartmentDao {
                 list.add(department);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.err.println(e);
             throw new ErrorException("Error getting data from the database");
         } finally {
             DBConnector.closeConnection(connection);
@@ -107,7 +111,8 @@ public class DepartmentDaoImpl implements DepartmentDao {
                 department.setName(resultSet.getString("name"));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println(e);
+//            e.printStackTrace();
             throw new ErrorException("Error getting data from the database");
         } finally {
             DBConnector.closeConnection(connection);

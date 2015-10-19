@@ -27,32 +27,23 @@
             <tr>
                 <td><c:out value="${department.name}"/></td>
                 <td>
-                    <form name="edit" method="post" style="margin-bottom: 0px">
-                        <button class="btn btn-default btn-sm" type="submit" name="action" value="editDepartment" >Edit</button>
-                        <input type="hidden" name="id" value="<c:out value="${department.id}"/>" >
-                    </form>
+                    <a class="btn btn-default btn-sm" href="?action=editDepartment&id=${department.id}" role="button">Edit</a>
                 </td>
                 <td>
-                    <form name="delete" method="post" style="margin-bottom: 0px">
-                        <button class="btn btn-default btn-sm" type="submit" name="action" value="deleteDepartment" >Delete</button>
-                        <input type="hidden" name="id" value="<c:out value="${department.id}"/>" >
-                    </form>
+                    <a class="btn btn-default btn-sm" href="?action=deleteDepartment&id=${department.id}">Delete</a>
                 </td>
                 <td>
-                    <form name="show employees" action="employee" method="post" style="margin-bottom: 0px">
-                        <button class="btn btn-default btn-sm" type="submit" name="action" value="showEmployees" >Show employees</button>
-                        <input type="hidden" name="id" value="<c:out value="${department.id}"/>" >
-                    </form>
+                    <a class="btn btn-default btn-sm" href="?action=showEmployees&id=<c:out value="${department.id}"/>" role="button">Show employees</a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-
-    <form name="Add new Department" method="post">
-        <button class="btn btn-default" type="submit" name="action" value="showDepartmentsForm">Add new Department
-        </button>
-    </form>
+    <a class="btn btn-default" href="?action=showDepartmentsForm">Add new Department</a>
+    <%--<form name="Add new Department" method="post">--%>
+        <%--<button class="btn btn-default" type="submit" name="action" value="showDepartmentsForm">Add new Department--%>
+        <%--</button>--%>
+    <%--</form>--%>
 </div>
 </body>
 </html>

@@ -1,8 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<style>--%>
-<%--<%@include file='/css/bootstrap.css' %>--%>
-<%--</style>--%>
 <html>
 <head>
     <title>Employee list</title>
@@ -10,9 +7,7 @@
 </head>
 <body>
 <div class="container">
-
     <h2>Department: <c:out value="${department.name}"/></h2>
-
     <table class="table table-striped" style="width: 800px">
         <thead>
         <tr>
@@ -31,34 +26,17 @@
                 <td><c:out value="${employee.date}"/></td>
                 <td><c:out value="${employee.salary}"/></td>
                 <td>
-                    <form name="edit" action="edit" method="post" style="margin-bottom: 0px">
-                        <button class="btn btn-default btn-sm" type="submit" name="action" value="editEmployee">
-                            Edit
-                        </button>
-                        <input type="hidden" name="id" value="<c:out value="${employee.id}"/>">
-                    </form>
+                    <a class="btn btn-default btn-sm" href="?action=editEmployee&id=${employee.id}">Edit</a>
                 </td>
                 <td>
-                    <form name="delete" method="post" style="margin-bottom: 0px">
-                        <button class="btn btn-default btn-sm" type="submit" name="action" value="deleteEmployee">Delete</button>
-                        <input type="hidden" name="id" value="<c:out value="${employee.id}"/>">
-                        <input type="hidden" name="departmentId" value="${department.id}">
-                    </form>
+                    <a class="btn btn-default btn-sm" href="?action=deleteEmployee&id=${employee.id}&departmentId=${employee.id}">Delete</a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-
-    <form name="Add new employee" method="post">
-        <button class="btn btn-default" type="submit" name="action" value="showEmployeeForm">Add new employee
-        </button>
-        <input type="hidden" name="id" value="${department.id}">
-    </form>
-    <br>
-    <form name="Back to department list" method="get">
-        <button type="submit" class="btn btn-default" name="action" value="backButton">Back to department list</button>
-    </form>
+    <a class="btn btn-default" href="?action=showEmployeeForm&id=${department.id}">Add new employee</a>
+    <a class="btn btn-default" href="?action=backButton">Back</a>
 </div>
 </body>
 </html>
