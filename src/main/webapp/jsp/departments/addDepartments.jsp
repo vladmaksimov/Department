@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
     <title>Departments</title>
     <meta charset="utf-8">
     <link type="text/css" href="<c:url value="/css/bootstrap.css"/>" rel="stylesheet"/>
