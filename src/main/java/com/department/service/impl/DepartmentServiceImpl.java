@@ -41,7 +41,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     public List<Department> getAllDepartments() throws ErrorException {
 //        return dao.getAll();
-        return dao.getAll(new Department());
+        return dao.getAll(Department.class);
     }
 
 }

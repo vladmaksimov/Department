@@ -10,11 +10,8 @@ import java.util.List;
 public interface GenericDao<T> {
 
     void delete(T o) throws ErrorException;
-
     void save(T o) throws ErrorException;
-
     T get(Integer id) throws ErrorException;
-
-    List<T> getAll(T t) throws ErrorException;
+    List<T> getAll() throws ErrorException;
 
 }

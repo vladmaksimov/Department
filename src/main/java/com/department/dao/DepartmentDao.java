@@ -2,9 +2,6 @@ package com.department.dao;
 
 import com.department.exeption.ErrorException;
 import com.department.model.Department;
-import com.department.model.Employee;
-
-import java.util.List;
 
 public interface DepartmentDao extends GenericDao<Department> {
 

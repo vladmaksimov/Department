@@ -2,7 +2,6 @@ package com.department.dao.impl;
 
 import com.department.dao.GenericDao;
 import com.department.exeption.ErrorException;
-import com.department.model.Department;
 import com.department.utils.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -13,11 +12,11 @@ import java.util.List;
  * Created on 19.10.15.
  */
 public abstract class GenericDaoImpl<T> implements GenericDao<T> {
+
     private final Class<T> entityClass;
 
     protected GenericDaoImpl(Class<T> aClass) {
         this.entityClass = aClass;
-
     }
 
     public void delete(Object o) throws ErrorException {
@@ -60,10 +59,10 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
         }
     }
 
-    public List<T> getAll(T t) throws ErrorException {
+    public List<T> getAll() throws ErrorException {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            return session.createQuery("from " + t.getClass().getName()).list();
+            return session.createCriteria(entityClass).list();
         } catch (HibernateException e) {
             e.printStackTrace();
             throw new ErrorException("Error getting data from the database");
