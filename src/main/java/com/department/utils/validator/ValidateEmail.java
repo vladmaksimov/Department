@@ -9,7 +9,7 @@ import net.sf.oval.constraint.CheckWithCheck;
 public class ValidateEmail implements CheckWithCheck.SimpleCheck{
 
     public boolean isSatisfied(Object o, Object o1) {
-        EmployeeDao dao = new EmployeeDaoImpl();
+        EmployeeDao dao = new EmployeeDaoImpl(Employee.class);
         Employee employee = (Employee)o;
         Employee dbEmployee = null;
         try {

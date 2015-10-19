@@ -10,7 +10,11 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class EmployeeDaoImpl extends GenericDaoImpl implements EmployeeDao   {
+public class EmployeeDaoImpl extends GenericDaoImpl<Employee> implements EmployeeDao   {
+
+    public EmployeeDaoImpl(Class<Employee> aClass) {
+        super(aClass);
+    }
 
     public List<Employee> getAllEmployees(Department department) throws ErrorException {
         List<Employee> list;

@@ -18,8 +18,7 @@ import java.util.Map;
 public class DepartmentServiceImpl implements DepartmentService {
     private DataValidator validator = new DataValidator();
 
-    private DepartmentDao dao = new DepartmentDaoImpl();
-    private GenericDao genericDaoImpl = new GenericDaoImpl();
+    private DepartmentDao dao = new DepartmentDaoImpl(Department.class);
 
     public void addOrUpdateDepartment(Department department) throws ValidateException, ErrorException {
         Map<String,String> errors = validator.validate(department);
@@ -27,22 +26,22 @@ public class DepartmentServiceImpl implements DepartmentService {
             throw new ValidateException("error", errors);
         }
 //        dao.add(department);
-        genericDaoImpl.save(department);
+        dao.save(department);
     }
 
     public Department getOneDepartment(Integer id) throws ErrorException {
 //        return dao.getOne(id);
-        return genericDaoImpl.get(Department.class, id);
+        return dao.get(id);
     }
 
     public void deleteDepartment(Department department) throws ErrorException {
 //        dao.delete(department);
-        genericDaoImpl.delete(department);
+        dao.delete(department);
     }
 
     public List<Department> getAllDepartments() throws ErrorException {
 //        return dao.getAll();
-        return genericDaoImpl.getAll(Department.class);
+        return dao.getAll(new Department());
     }
 
 }

@@ -15,6 +15,6 @@ public interface GenericDao<T> {
 
     T get(Integer id) throws ErrorException;
 
-    List<T> getAll() throws ErrorException;
+    List<T> getAll(T t) throws ErrorException;
 
 }

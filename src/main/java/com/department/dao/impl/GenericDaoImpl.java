@@ -2,6 +2,7 @@ package com.department.dao.impl;
 
 import com.department.dao.GenericDao;
 import com.department.exeption.ErrorException;
+import com.department.model.Department;
 import com.department.utils.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -59,10 +60,10 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
         }
     }
 
-    public <T> List<T> getAll(Class<T> classType) throws ErrorException {
+    public List<T> getAll(T t) throws ErrorException {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            return session.createCriteria(classType).list();
+            return session.createQuery("from " + t.getClass().getName()).list();
         } catch (HibernateException e) {
             e.printStackTrace();
             throw new ErrorException("Error getting data from the database");

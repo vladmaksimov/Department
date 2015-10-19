@@ -10,7 +10,7 @@ import net.sf.oval.constraint.CheckWithCheck;
  * Created by vlad-m on 16.10.15.
  */
 public class ValidateDepartmentName implements CheckWithCheck.SimpleCheck {
-    DepartmentDao dao = new DepartmentDaoImpl();
+    DepartmentDao dao = new DepartmentDaoImpl(Department.class);
 
     public boolean isSatisfied(Object o, Object o1) {
         Department department = (Department) o;

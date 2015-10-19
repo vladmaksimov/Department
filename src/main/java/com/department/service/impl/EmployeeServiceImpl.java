@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 public class EmployeeServiceImpl implements EmployeeService {
-    private EmployeeDao dao = new EmployeeDaoImpl();
+    private EmployeeDao dao = new EmployeeDaoImpl(Employee.class);
     private DataValidator validator = new DataValidator();
 
 
@@ -26,12 +26,10 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new ValidateException("error", errors);
         }
         dao.save(employee);
-//        dao.addOrEditEmployee(employee);
     }
 
     public void deleteEmployee(Employee employee) throws ErrorException {
         dao.delete(employee);
-//        dao.delete(employee);
     }
 
     public List<Employee> getAllEmployees(Department department) throws ErrorException {
@@ -40,6 +38,5 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public Employee getOneEmployee(Integer id) throws ErrorException {
         return dao.get(id);
-//        return dao.getOneEmployee(id);
     }
 }

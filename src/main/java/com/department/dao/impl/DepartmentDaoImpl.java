@@ -7,7 +7,11 @@ import com.department.utils.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-public class DepartmentDaoImpl extends GenericDaoImpl implements DepartmentDao  {
+public class DepartmentDaoImpl extends GenericDaoImpl<Department> implements DepartmentDao  {
+
+    public DepartmentDaoImpl(Class<Department> aClass) {
+        super(aClass);
+    }
 
     public Department getByName(String name) throws ErrorException {
         Department department = null;
