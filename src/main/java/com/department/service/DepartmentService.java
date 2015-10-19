@@ -10,7 +10,7 @@ public interface DepartmentService {
 
     void addOrUpdateDepartment(Department department) throws ValidateException, ErrorException;
 
-    void deleteDepartment(Integer id) throws ErrorException;
+    void deleteDepartment(Department department) throws ErrorException;
 
     Department getOneDepartment(Integer id) throws ErrorException;
 

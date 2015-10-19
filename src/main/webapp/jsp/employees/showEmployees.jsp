@@ -26,10 +26,10 @@
                 <td><c:out value="${employee.date}"/></td>
                 <td><c:out value="${employee.salary}"/></td>
                 <td>
-                    <a class="btn btn-default btn-sm" href="?action=editEmployee&id=${employee.id}">Edit</a>
+                    <a class="btn btn-default btn-sm" href="?action=editEmployee&id=${employee.id}&departmentId=${department.id}">Edit</a>
                 </td>
                 <td>
-                    <a class="btn btn-default btn-sm" href="?action=deleteEmployee&id=${employee.id}&departmentId=${employee.id}">Delete</a>
+                    <a class="btn btn-default btn-sm" href="?action=deleteEmployee&id=${employee.id}&departmentId=${department.id}">Delete</a>
                 </td>
             </tr>
         </c:forEach>

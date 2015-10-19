@@ -12,7 +12,7 @@
 
         <input type="hidden" name="id" value="${employee.id}">
         <input type="hidden" name="departmentId" value="${department.id}">
-        <input type="hidden" name="departmentId" value="${employee.departmentId}">
+        <input type="hidden" name="departmentId" value="${employee.department.id}">
 
         <div class="text"><h2><c:out value="${department.name}"/> department</h2></div>
         <br>

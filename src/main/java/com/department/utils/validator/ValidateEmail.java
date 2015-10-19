@@ -21,7 +21,7 @@ public class ValidateEmail implements CheckWithCheck.SimpleCheck{
             } catch (ErrorException ignored) {}
         }
         if(dbEmployee != null){
-            return dbEmployee.getId().equals(employee.getId());
+            return !dbEmployee.getId().equals(employee.getId());
         }
         return true;
     }

@@ -2,9 +2,12 @@ package com.department.service.impl;
 
 
 import com.department.dao.EmployeeDao;
+import com.department.dao.GenericDao;
 import com.department.dao.impl.EmployeeDaoImpl;
+import com.department.dao.impl.GenericDaoImpl;
 import com.department.exeption.ErrorException;
 import com.department.exeption.ValidateException;
+import com.department.model.Department;
 import com.department.model.Employee;
 import com.department.service.EmployeeService;
 import com.department.utils.validator.DataValidator;
@@ -22,18 +25,21 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (errors.size() > 0) {
             throw new ValidateException("error", errors);
         }
-        dao.addOrEditEmployee(employee);
+        dao.save(employee);
+//        dao.addOrEditEmployee(employee);
     }
 
-    public void deleteEmployee(Integer id) throws ErrorException {
-        dao.delete(id);
+    public void deleteEmployee(Employee employee) throws ErrorException {
+        dao.delete(employee);
+//        dao.delete(employee);
     }
 
-    public List<Employee> getAllEmployees(Integer id) throws ErrorException {
-        return dao.getAllEmployees(id);
+    public List<Employee> getAllEmployees(Department department) throws ErrorException {
+        return dao.getAllEmployees(department);
     }
 
     public Employee getOneEmployee(Integer id) throws ErrorException {
-        return dao.getOneEmployee(id);
+        return dao.get(id);
+//        return dao.getOneEmployee(id);
     }
 }

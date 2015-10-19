@@ -2,6 +2,7 @@ package com.department.controller.processor.impl.departments;
 
 import com.department.controller.processor.Processor;
 import com.department.exeption.ErrorException;
+import com.department.model.Department;
 import com.department.service.DepartmentService;
 import com.department.service.impl.DepartmentServiceImpl;
 
@@ -16,7 +17,8 @@ import java.io.IOException;
 public class DeleteDepartment implements Processor {
     public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ErrorException {
         DepartmentService service = new DepartmentServiceImpl();
-        service.deleteDepartment(Integer.parseInt(req.getParameter("id")));
+        Department department = service.getOneDepartment(Integer.parseInt(req.getParameter("id")));
+        service.deleteDepartment(department);
         req.setAttribute("departmentsList", service.getAllDepartments());
         req.getRequestDispatcher("jsp/departments/showDepartments.jsp").forward(req, resp);
     }

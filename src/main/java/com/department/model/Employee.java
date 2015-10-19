@@ -3,34 +3,49 @@ package com.department.model;
 import com.department.utils.validator.ValidateEmail;
 import net.sf.oval.constraint.*;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created on 16.09.2015.
  */
+
+@Entity
+@Table(name = "employees")
 public class Employee {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @NotEmpty(message = "Field name is empty")
     @NotNull(message = "Field name is empty")
     @Length(min = 1, max = 20, message = "insert minimum 1 char")
+    @Column(name = "name")
     private String name;
 
     @NotNull(message = "Incorrect date format")
     @NotEmpty(message = "Field date is empty")
+    @Column(name = "date")
+    @Temporal(value = TemporalType.DATE)
     private Date date;
-    private Integer departmentId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "departmentId", nullable = false)
+    private Department department;
 
     @NotNull(message = "Field email is empty")
     @NotEmpty(message = "Field email is empty")
     @Email(message = "incorrect email format")
     @CheckWith(value = ValidateEmail.class, message = "This email already exist")
+    @Column(name = "email")
     private String email;
 
     @NotNull (message = "Field salary is empty")
     @NotEmpty (message = "Field salary is empty")
     @Length (min = 1, message = "insert minimum 1 int")
     @NotNegative (message = "Salary can't be negative")
+    @Column(name = "salary")
     private Float salary;
 
     public Integer getId() {
@@ -65,14 +80,6 @@ public class Employee {
         this.email = email;
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
-    }
-
     public Float getSalary() {
         return salary;
     }
@@ -81,4 +88,11 @@ public class Employee {
         this.salary = salary;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 }
