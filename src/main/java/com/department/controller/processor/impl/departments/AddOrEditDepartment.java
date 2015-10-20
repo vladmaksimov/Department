@@ -33,4 +33,5 @@ public class AddOrEditDepartment implements Processor {
             req.getRequestDispatcher("jsp/departments/addDepartments.jsp").forward(req, resp);
         }
     }
+
 }
